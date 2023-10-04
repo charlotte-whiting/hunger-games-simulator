@@ -1,12 +1,11 @@
 import Link from "next/link";
-import { allTributes } from "./reaping";
-import Layout from "../components/layout";
-import { AllDead, Randomize } from "./bloodbath";
+import { AllDead, Randomize } from "../bloodbath/page";
+import { allTributes } from "../reaping/page";
 
 export default function Day() {
   console.log(allTributes);
   return (
-    <Layout>
+    <>
       {allTributes.map((person) => {
         console.log(AllDead());
         if (person.used || !person.alive) {
@@ -16,6 +15,6 @@ export default function Day() {
         }
       })}
       <Link href="/night">Night falls...</Link>
-    </Layout>
+    </>
   );
 }

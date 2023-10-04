@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { allTributes } from "./reaping";
-import Layout from "../components/layout";
+import { allTributes } from "../reaping/page";
 import {
   single_person_dies_phrases,
   single_person_survives_phrases,
-} from "./single_person_phrases";
+} from "../phrases/single_person_phrases";
 import Head from "next/head";
 
 // have a day night export that you switch between
@@ -12,7 +11,7 @@ import Head from "next/head";
 export default function Bloodbath() {
   console.log(allTributes);
   return (
-    <Layout>
+    <>
       <Head>Bloodbath</Head>
       {allTributes.map((person) => {
         if (person.used || !person.alive) {
@@ -24,10 +23,10 @@ export default function Bloodbath() {
       <Link href="/day">Day</Link>
       <br />
       <Link href="/reaping">Back to Reaping</Link>
-    </Layout>
+    </>
   );
 }
-
+// @ts-ignore
 export function Randomize(person) {
   //   const numPeople = Math.random() * 4 + 1;
   // just one person for now
@@ -46,6 +45,7 @@ export function AllDead() {
   return true;
 }
 
+// @ts-ignore
 export function SinglePerson(person) {
   const liveOrDie = Math.random() * 10 + 1;
   if (liveOrDie <= 5) {
